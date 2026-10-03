@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Advanced To-Do App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="app">
+
+    <!-- GLOBAL TIME -->
+    <div class="global-time">
+
+    <div class="timezone-box">
+
+        <label for="timezoneSelect">
+            Global Time Zone
+        </label>
+
+        <select id="timezoneSelect">
+
+            <option value="Asia/Kolkata">
+                Asia/Kolkata
+            </option>
+
+            <option value="Asia/Dubai">
+                Asia/Dubai
+            </option>
+
+            <option value="Asia/Singapore">
+                Asia/Singapore
+            </option>
+
+            <option value="Asia/Tokyo">
+                Asia/Tokyo
+            </option>
+
+            <option value="Europe/London">
+                Europe/London
+            </option>
+
+            <option value="Europe/Paris">
+                Europe/Paris
+            </option>
+
+            <option value="America/New_York">
+                America/New_York
+            </option>
+
+            <option value="America/Los_Angeles">
+                America/Los_Angeles
+            </option>
+
+            <option value="Australia/Sydney">
+                Australia/Sydney
+            </option>
+
+        </select>
+
+    </div>
+
+
+    <div id="globalTime">
+        00:00:00
+    </div>
+
+
+    <div id="globalDate">
+        Loading date...
+    </div>
+
+</div>
+
+
+    <!-- TITLE -->
+
+    <h1>Task Manager</h1>
+
+
+    <!-- TASK INPUT -->
+
+    <div class="input-section">
+
+        <input
+            type="text"
+            id="taskInput"
+            placeholder="Enter a task"
+        >
+
+        <button onclick="addTask()">
+            Add Task
+        </button>
+
+    </div>
+
+
+    <!-- ALARM SETTINGS -->
+
+<div class="alarm-section">
+
+    <div class="alarm-title">
+        Task Alarm
+    </div>
+
+    <div class="alarm-fields">
+
+        <div>
+            <label for="alarmDate">
+                Date
+            </label>
+
+            <input
+                type="date"
+                id="alarmDate"
+            >
+        </div>
+
+        <div>
+            <label for="alarmTime">
+                Time
+            </label>
+
+            <input
+                type="time"
+                id="alarmTime"
+            >
+        </div>
+
+    </div>
+
+
+    <div class="finish-section">
+
+    <div class="finish-row">
+
+        <div class="finish-field">
+
+            <label for="finishDuration">
+                Finish after
+            </label>
+
+            <select id="finishDuration">
+
+                <option value="0">
+                    No
+                </option>
+
+                <option value="15">
+                    15 minutes
+                </option>
+
+                <option value="30">
+                    30 minutes
+                </option>
+
+                <option value="60">
+                    1 hour
+                </option>
+
+                <option value="120">
+                    2 hours
+                </option>
+
+                <option value="custom">
+                    Custom
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <div class="finish-field">
+
+            <label for="reminderBefore">
+                Reminder before
+            </label>
+
+            <select id="reminderBefore">
+
+                <option value="0">
+                    No reminder
+                </option>
+
+                <option value="1">
+                    1 minute
+                </option>
+
+                <option value="5" selected>
+                    5 minutes
+                </option>
+
+                <option value="10">
+                    10 minutes
+                </option>
+
+                <option value="15">
+                    15 minutes
+                </option>
+
+                <option value="30">
+                    30 minutes
+                </option>
+
+                <option value="60">
+                    1 hour
+                </option>
+
+                <option value="custom">
+                    Custom
+                </option>
+
+            </select>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<div
+    id="customDurationBox"
+    class="custom-duration hidden"
+>
+
+    <label for="customDuration">
+        Custom finish duration
+    </label>
+
+    <div class="custom-duration-input">
+
+        <input
+            type="number"
+            id="customDuration"
+            min="1"
+            placeholder="Enter duration"
+        >
+
+        <select id="customDurationUnit">
+
+            <option value="minutes">
+                Minutes
+            </option>
+
+            <option value="hours">
+                Hours
+            </option>
+
+        </select>
+
+    </div>
+
+</div>
+
+
+<div
+    id="customReminderBox"
+    class="custom-duration hidden"
+>
+
+    <label for="customReminder">
+        Custom reminder
+    </label>
+
+    <div class="custom-duration-input">
+
+        <input
+            type="number"
+            id="customReminder"
+            min="1"
+            placeholder="Enter reminder time"
+        >
+
+        <select id="customReminderUnit">
+
+            <option value="minutes">
+                Minutes
+            </option>
+
+            <option value="hours">
+                Hours
+            </option>
+
+        </select>
+
+    </div>
+
+</div>
+
+
+    <!-- PROGRESS -->
+
+    <div class="progress-section">
+
+        <p id="progressText">
+            0 Active | 0 Completed
+        </p>
+
+    </div>
+
+
+    <!-- FILTERS -->
+
+    <div class="filters">
+
+        <button onclick="filterTasks('all')">
+            All
+        </button>
+
+        <button onclick="filterTasks('active')">
+            Active
+        </button>
+
+        <button onclick="filterTasks('completed')">
+            Completed
+        </button>
+
+    </div>
+
+
+    <!-- TASK LIST -->
+
+    <ul id="taskList"></ul>
+
+</div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
